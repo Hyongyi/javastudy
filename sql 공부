@@ -81,7 +81,6 @@ WHERE delete 조건;
 예시)
 
 
-
 제약 상황 보는 SQL :
 
 SELECT constraint_name, constraint_type, table_name, search_condition
@@ -90,4 +89,15 @@ WHERE table_name = '테이블 명';
 예시)
 
 
-     
+제약 조건 NOT NULL :
+데이터에 무조건 값을 넣어야 하는 경우에 NOT NULL을 붙혀준다.
+
+컬럼명 데이터 타입 NOT NULL
+
+예시)
+create table customer ( 
+         id varchar2(20) 
+         pwd varchar2(20) not null); 
+         
+UNIQUE 해당 컬럼에 들어가는 값이 유일해야 한다는 의미. 중복값을 허용하지 않음.
+*비교대상에서 NULL은 제외
