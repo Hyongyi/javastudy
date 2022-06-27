@@ -1,0 +1,61 @@
+sql 공부
+
+CREATE : 테이블을 생성하는 명령문
+
+CREATE TABLE '테이블명' (
+        '컬럼명' 컬럼 타입(ex number, varchar2)
+        '컬럼명' 컬럼 타입(ex number, varchar2)
+        '컬럼명' 컬럼 타입(ex number, varchar2)
+        );
+        
+예시) 
+
+create table customer ( 
+       id varchar2(20) unique,
+       name varchar2(20) not null,
+       phone varchar2(30),
+       address varchar2(100),
+       salary number(7) default 100);
+                    
+        
+INSERT : 테이블 안에 자료를 넣은 명령문        
+        
+INSEET INTO '자료를 넣고 싶은 테이블 명' ( 컬럼 명, 컬럼 명, 컬럼 명)
+       VALUES (숫자 , '문자' , '문자');
+ 
+예시)
+ 
+INSERT INTO customer (name, phone, address)
+VALUES ('홍할갈', '010-0223-4323', '서울 강북구');
+
+INSEET INTO '자료를 넣고 싶은 테이블 명' ( 컬럼 명, 컬럼 명, 컬럼 명)
+       SELECT '가져오고 싶은 자료 컬럼 명, 가져오고 싶은 자료 컬럼 명,가져오고 싶은 자료 컬럼 명'  //자료를 넣을 테이블과 가져올 테이블의 자료와 컬럼명 맞춰주기
+       FROM  '가져오고 싶은 테이블 명'
+       SELECT 조건문
+
+예시)
+
+insert into customer (name, phone, address)
+        select first_name, phone_number, address
+        from employees
+        
+UPDATE : 테이블 안의 자료를 변경할때 쓰는 명령문
+
+UPDATE '테이블 명'
+SET 컬럼명1 = 변경값1
+SET 컬럼명2 = 변경값2
+WHERE 조건;
+
+예시)
+
+
+제약 상황 보는 SQL :
+
+SELECT constraint_name, constraint_type, table_name, search_condition
+FROM user_constraints
+WHERE table_name = '테이블 명'
+
+
+
+
+     
