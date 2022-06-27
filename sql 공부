@@ -105,3 +105,31 @@ create table customer (
 컬럼명 데이터 타입 UNIQUE
 혹은
 CONSTRAINTS 제약조건명 UNIQUE(컬럼명,...)
+
+예시)
+create table customer ( 
+       id varchar2(20) unique,
+       pwd varchar2(20) unique not null,
+       dnum number(3),
+       constraints dnum_nm1 unique (dnum)
+       );
+       
+
+
+
+
+
+create table customer ( 
+        id varchar2(20),
+        pwd varchar2(20) not null, 
+        name varchar2(20) not null, 
+        phone char(13) default '010-0000-0000',
+        address varchar2(100),
+        salary number(7)  check (salary >0),
+        sdate date default  sysdate,
+        dno number(3),
+        CONSTRAINT customer_id_pk primary key(id),
+        CONSTRAINT customer_dno_fk foreign key(dno)
+                   REFERENCES departments(department_id)
+        );
+        
