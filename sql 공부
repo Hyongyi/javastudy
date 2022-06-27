@@ -1,5 +1,9 @@
 sql 공부
 
+COMMMTT = 오라클에서 데이터를 변경, 수정한 내용을 반영하기 위해 무조건적으로 해줘야 하는 명령어
+ROLLBACK = 데이터를 잘못 수정하거나 삭제 했을때 다시 되돌리기 위한 명령어
+
+
 CREATE : 테이블을 생성하는 명령문
 
 CREATE TABLE '테이블명' (
@@ -60,7 +64,22 @@ DROP TABLE '테이블 명'
 
 DROP TABLE CUSTOMER;
 
-DELETE : 
+DELETE : 테이블에 있는 데이터를 삭제할 때 쓰는 명령문
+
+1. 일반 구문
+DELETE FROM '테이블 명'
+WHERE delete 조건;
+
+예시)
+delete EX3_2
+where emp_id = 102
+
+2. 특정 파티션만 삭제할 경우
+DELETE FROM '테이블 명' PARTITION '파티션명'
+WHERE delete 조건;
+
+예시)
+
 
 
 제약 상황 보는 SQL :
