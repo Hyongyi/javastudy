@@ -99,5 +99,9 @@ create table customer (
          id varchar2(20) 
          pwd varchar2(20) not null); 
          
-UNIQUE 해당 컬럼에 들어가는 값이 유일해야 한다는 의미. 중복값을 허용하지 않음.
-*비교대상에서 NULL은 제외
+제약 조건 : UNIQUE 해당 컬럼에 들어가는 값이 유일해야 한다는 의미. 중복값을 허용하지 않음.
+*NULL값은 값이 없으므로 비교에서 NULL은 제외
+
+컬럼명 데이터 타입 UNIQUE
+혹은
+CONSTRAINTS 제약조건명 UNIQUE(컬럼명,...)
