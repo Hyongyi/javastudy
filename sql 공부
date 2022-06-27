@@ -37,7 +37,7 @@ INSEET INTO '자료를 넣고 싶은 테이블 명' ( 컬럼 명, 컬럼 명, �
 
 insert into customer (name, phone, address)
         select first_name, phone_number, address
-        from employees
+        from employees;
         
 UPDATE : 테이블 안의 자료를 변경할때 쓰는 명령문
 
@@ -48,14 +48,27 @@ WHERE 조건;
 
 예시)
 
+UPDATE EX3_2
+SET EMP_name = 'Austin'
+WHERE emp_id = 102;
+
+DROP :테이블 삭제 명령문(완전 삭제로 롤백 불가)
+
+DROP TABLE '테이블 명'
+
+예시)
+
+DROP TABLE CUSTOMER;
+
+DELETE : 
+
 
 제약 상황 보는 SQL :
 
 SELECT constraint_name, constraint_type, table_name, search_condition
 FROM user_constraints
-WHERE table_name = '테이블 명'
-
-
+WHERE table_name = '테이블 명';
+예시)
 
 
      
