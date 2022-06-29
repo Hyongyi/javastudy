@@ -115,6 +115,18 @@ create table customer (
        );
        
 
+계산열 컬럼 만들기
+
+ex)
+
+CREATE TABLE dbo.Products(
+      ProductID int IDENTITY (1,1) NOT NULL
+      , QtyAvailable smallint
+      , UnitPrice money
+      , InventoryValue AS (QtyAvailable * UnitPrice)
+        );
+       
+
 
 
 
