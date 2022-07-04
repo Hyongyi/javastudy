@@ -143,7 +143,7 @@ Primary key 만들기
 문법 :
 컬럼명 데이터 타입 primary key
 혹은
-constraints 제약조건명 primary jey(컬럼명)
+constraints 제약조건명 primary key(컬럼명)
 
 
 예시)
