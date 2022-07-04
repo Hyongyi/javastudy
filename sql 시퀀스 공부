@@ -40,7 +40,9 @@ DROP SEQUENCE [시퀀스명]
 예제)
 DROP SEQUENCE dno_second
 
-일련번호 처럼 증감하는 숫자를 넣을시 nextval이라는 문법 사용
+일련번호 처럼 증감하는 숫자를 넣을시.nextval이라는 문법 사용
+
+시퀀스명.currval 사용시 해당 시퀀스의 현재 값을 알 수 있다.
 
 ex)
 insert into dept_second (department_id, department_name)
