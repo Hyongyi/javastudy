@@ -20,6 +20,16 @@ create table customer (
        phone varchar2(30),
        address varchar2(100),
        salary number(7) default 100);
+
+
+테이블 생성시 바로 자료를 선택해서 생성하는 것도 가능
+
+예시)
+       
+create table dept_second 
+as select  * 
+    from  departments
+    where 0=1
                     
         
 INSERT : 테이블 안에 자료를 넣은 명령문        
