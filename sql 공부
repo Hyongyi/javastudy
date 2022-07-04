@@ -136,7 +136,25 @@ CREATE TABLE dbo.Products(
       , InventoryValue AS (QtyAvailable * UnitPrice)
         );
        
+       
+       
+Primary key 만들기
 
+문법 :
+컬럼명 데이터 타입 primary key
+혹은
+constraints 제약조건명 primary jey(컬럼명)
+
+
+예시)
+create table student (
+            name varchar2(10),
+            score number(3) not null,
+            dept_id number(4),
+            constraint student_name_pk primary key(name),
+            constraint  student_dept_id_fk foreign key(dept_id) 
+                            REFERENCES departments (department_id)
+            );
 
 
 
