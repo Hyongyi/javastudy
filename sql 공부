@@ -4,6 +4,24 @@ COMMMTT = 오라클에서 데이터를 변경, 수정한 내용을 반영하기 
 ROLLBACK = 데이터를 잘못 수정하거나 삭제 했을때 다시 되돌리기 위한 명령어
 
 
+DESC : 테이블 구조를 알아보는 명령어
+
+문법) dexc 테이블명
+
+예시) desc employees;
+
+
+DISTINCT : 중복되는 데이터 제거
+많은 데이터들 중에서 중복되는 데이터를 제거하고자 할때 쓰임
+
+
+문법) Select distinct 컬럼명
+        from 테이블명
+        where 조건;
+
+예시) select distinct depart_id
+        from emlpoyees;
+
 CREATE : 테이블을 생성하는 명령문
 
 CREATE TABLE '테이블명' (
