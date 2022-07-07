@@ -108,6 +108,21 @@ WHERE delete 조건;
 
 예시)
 
+Order : 출력문은 정렬할때 쓰는 명령문
+
+
+문법) select 컬럼명,... 
+      from 테이블 명
+      order by 정렬하고자 하는 기준 컬럼명
+      
+예시) select eno, enum
+      from emp
+      order by eno;
+      
+오름차순으로 정렬시 order by 컬럼명 asc
+내림자순으로 정렬시 order by 컬럼명 desc
+
+
 
 제약 상황 보는 SQL :
 
