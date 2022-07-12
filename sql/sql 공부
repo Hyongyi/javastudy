@@ -1,1 +1,209 @@
 
+sql 공부
+
+COMMMTT = 오라클에서 데이터를 변경, 수정한 내용을 반영하기 위해 무조건적으로 해줘야 하는 명령어
+ROLLBACK = 데이터를 잘못 수정하거나 삭제 했을때 다시 되돌리기 위한 명령어
+
+
+DESC : 테이블 구조를 알아보는 명령어
+
+문법) dexc 테이블명
+
+예시) desc employees;
+
+
+DISTINCT : 중복되는 데이터 제거
+많은 데이터들 중에서 중복되는 데이터를 제거하고자 할때 쓰임
+
+
+문법) Select distinct 컬럼명
+        from 테이블명
+        where 조건;
+
+예시) select distinct depart_id
+        from emlpoyees;
+
+CREATE : 테이블을 생성하는 명령문
+
+CREATE TABLE '테이블명' (
+        '컬럼명' 컬럼 타입(ex number, varchar2)
+        '컬럼명' 컬럼 타입(ex number, varchar2)
+        '컬럼명' 컬럼 타입(ex number, varchar2)
+        );
+        
+예시) 
+
+create table customer ( 
+       id varchar2(20) unique,
+       name varchar2(20) not null,
+       phone varchar2(30),
+       address varchar2(100),
+       salary number(7) default 100);
+
+
+테이블 생성시 바로 자료를 선택해서 생성하는 것도 가능
+
+예시)
+       
+create table dept_second 
+as select  * 
+    from  departments
+    where 0=1
+                    
+        
+INSERT : 테이블 안에 자료를 넣은 명령문        
+        
+INSEET INTO '자료를 넣고 싶은 테이블 명' ( 컬럼 명, 컬럼 명, 컬럼 명)
+       VALUES (숫자 , '문자' , '문자');
+ 
+예시)
+ 
+INSERT INTO customer (name, phone, address)
+VALUES ('홍할갈', '010-0223-4323', '서울 강북구');
+
+INSEET INTO '자료를 넣고 싶은 테이블 명' ( 컬럼 명, 컬럼 명, 컬럼 명)
+       SELECT '가져오고 싶은 자료 컬럼 명, 가져오고 싶은 자료 컬럼 명,가져오고 싶은 자료 컬럼 명'  //자료를 넣을 테이블과 가져올 테이블의 자료와 컬럼명 맞춰주기
+       FROM  '가져오고 싶은 테이블 명'
+       SELECT 조건문
+
+예시)
+
+insert into customer (name, phone, address)
+        select first_name, phone_number, address
+        from employees;
+        
+UPDATE : 테이블 안의 자료를 변경할때 쓰는 명령문
+
+UPDATE '테이블 명'
+SET 컬럼명1 = 변경값1
+SET 컬럼명2 = 변경값2
+WHERE 조건;
+
+예시)
+
+UPDATE EX3_2
+SET EMP_name = 'Austin'
+WHERE emp_id = 102;
+
+DROP :테이블 삭제 명령문(완전 삭제로 롤백 불가)
+
+DROP TABLE '테이블 명'
+
+예시)
+
+DROP TABLE CUSTOMER;
+
+DELETE : 테이블에 있는 데이터를 삭제할 때 쓰는 명령문
+
+1. 일반 구문
+DELETE FROM '테이블 명'
+WHERE delete 조건;
+
+예시)
+delete EX3_2
+where emp_id = 102
+
+2. 특정 파티션만 삭제할 경우
+DELETE FROM '테이블 명' PARTITION '파티션명'
+WHERE delete 조건;
+
+예시)
+
+Order : 출력문은 정렬할때 쓰는 명령문
+
+
+문법) select 컬럼명,... 
+      from 테이블 명
+      order by 정렬하고자 하는 기준 컬럼명
+      
+예시) select eno, enum
+      from emp
+      order by eno;
+      
+오름차순으로 정렬시 order by 컬럼명 asc
+내림자순으로 정렬시 order by 컬럼명 desc
+
+
+
+제약 상황 보는 SQL :
+
+SELECT constraint_name, constraint_type, table_name, search_condition
+FROM user_constraints
+WHERE table_name = '테이블 명';
+예시)
+
+
+제약 조건 NOT NULL :
+데이터에 무조건 값을 넣어야 하는 경우에 NOT NULL을 붙혀준다.
+
+컬럼명 데이터 타입 NOT NULL
+
+예시)
+create table customer ( 
+         id varchar2(20) 
+         pwd varchar2(20) not null); 
+         
+제약 조건 : UNIQUE 해당 컬럼에 들어가는 값이 유일해야 한다는 의미. 중복값을 허용하지 않음.
+*NULL값은 값이 없으므로 비교에서 NULL은 제외
+
+컬럼명 데이터 타입 UNIQUE
+혹은
+CONSTRAINTS 제약조건명 UNIQUE(컬럼명,...)
+
+예시)
+create table customer ( 
+       id varchar2(20) unique,
+       pwd varchar2(20) unique not null,
+       dnum number(3),
+       constraints dnum_nm1 unique (dnum)
+       );
+       
+
+계산열 컬럼 만들기
+
+ex)
+
+CREATE TABLE dbo.Products(
+      ProductID int IDENTITY (1,1) NOT NULL
+      , QtyAvailable smallint
+      , UnitPrice money
+      , InventoryValue AS (QtyAvailable * UnitPrice)
+        );
+       
+       
+       
+Primary key 만들기
+
+문법 :
+컬럼명 데이터 타입 primary key
+혹은
+constraints 제약조건명 primary key(컬럼명)
+
+
+예시)
+create table student (
+            name varchar2(10),
+            score number(3) not null,
+            dept_id number(4),
+            constraint student_name_pk primary key(name),
+            constraint  student_dept_id_fk foreign key(dept_id) 
+                            REFERENCES departments (department_id)
+            );
+
+
+
+
+create table customer ( 
+        id varchar2(20),
+        pwd varchar2(20) not null, 
+        name varchar2(20) not null, 
+        phone char(13) default '010-0000-0000',
+        address varchar2(100),
+        salary number(7)  check (salary >0),
+        sdate date default  sysdate,
+        dno number(3),
+        CONSTRAINT customer_id_pk primary key(id),
+        CONSTRAINT customer_dno_fk foreign key(dno)
+                   REFERENCES departments(department_id)
+        );
+        
